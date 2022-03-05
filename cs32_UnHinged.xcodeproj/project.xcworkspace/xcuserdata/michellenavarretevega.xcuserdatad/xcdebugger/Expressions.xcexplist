@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "RadixTree&lt;int*&gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int* const&amp;):RadixTree.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "tempPos">
+            </PersistentString>
+            <PersistentString
+               value = "newstr">
+            </PersistentString>
+            <PersistentString
+               value = "newstr[tempPos]-&apos;a&apos;">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RadixTree&lt;int*&gt;::insertRecursive(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int* const&amp;, RadixTree&lt;int*&gt;::Node*):RadixTree.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "newKey[0] - &apos;a&apos;">
+            </PersistentString>
+            <PersistentString
+               value = "currNode-&gt;children[pos]-&gt;n_key[0] == key[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "main:main.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "RadixTree&lt;int*&gt;::search(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;) const:RadixTree.h">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
