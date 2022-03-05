@@ -6,7 +6,7 @@
          contextName = "RadixTree&lt;int*&gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int* const&amp;):RadixTree.h">
          <PersistentStrings>
             <PersistentString
-               value = "tempPos">
+               value = "current-&gt;children[pos]-&gt;n_key[i]">
             </PersistentString>
             <PersistentString
                value = "newstr">

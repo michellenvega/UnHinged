@@ -87,7 +87,6 @@ int main(){
     
     RadixTree<int*> r_test;
     
-    const int what = 3;
     r_test.insert("tester",0);
     r_test.insert("slow",0);
     r_test.insert("water",0);
@@ -108,10 +107,15 @@ int main(){
     cout << "passed section 2" << endl;
     
     
-    //need the split!!!!!
+    
     r_test.insert("test",0);
     
     
     cout << "passed section 3" << endl;
+    
+    r_test.insert("team",0);
+    
+    cout << "passed section 4" << endl;
+    
 }
 
