@@ -6,3 +6,13 @@
 //
 
 #include "MemberDatabase.h"
+
+MemberDatabase::MemberDatabase(){}
+
+MemberDatabase::~MemberDatabase(){}
+
+
+bool MemberDatabase::LoadDatabase(std::string filename){
+    
+    return false;
+}

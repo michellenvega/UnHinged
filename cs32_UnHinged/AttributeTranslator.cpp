@@ -20,15 +20,17 @@ AttributeTranslator ::~AttributeTranslator(){
 
 bool AttributeTranslator::Load(string filename){
     
-    //     This method loads the attribute-value translation data from the data file specified by the
-    //     filename parameter.
-    
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    //   This method loads the attribute-value translation data from
+    //   the data file specified by the filename parameter.
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+
     ifstream ifs (filename);    //  Check if file loaded correctly
     
     if(!ifs)  return false;  // failed to open
 
-    //      The method must load the data into a data structure that enables efficient
-    //      translation of attribute-value pairs
+    //   The method must load the data into a data structure that enables efficient
+    //   translation of attribute-value pairs
     
     string oneLine; //Gonna go one line at a time
     

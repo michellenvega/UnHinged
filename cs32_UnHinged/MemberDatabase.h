@@ -9,8 +9,26 @@
 #define MemberDatabase_h
 
 #include <stdio.h>
+#include <iostream>
+#include "provided.h"
+#include "RadixTree.h"
+#include "PersonProfile.h"
+using namespace std;
 
 
+
+class MemberDatabase{
+public:
+    MemberDatabase();   // Constructor
+    ~MemberDatabase();  // Destructor
+    bool LoadDatabase(std::string filename);
+    std::vector<std::string> FindMatchingMembers(const AttValPair& input) const;
+    const PersonProfile* GetMemberByEmail(std::string email) const;
+private:
+//  Data Strcutures:
+    RadixTree<vector<string>> member_attr;  // keep track of all attributes
+    RadixTree<PersonProfile> member_emails; //  keep track of all emails
+};
 
 
 
