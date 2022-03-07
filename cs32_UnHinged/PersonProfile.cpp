@@ -64,7 +64,7 @@ void PersonProfile::AddAttValPair(const AttValPair& attval){
         //  If they do not equal, we add the value to the RadixTree!
         p_value->push_back(attval.value);   //  Put in vector
         p_tree.insert(attval.attribute, (*p_value) );
-        attributes.push_back(attval.attribute);
+        attributes.push_back(attval);
         
     }
     
@@ -74,7 +74,7 @@ void PersonProfile::AddAttValPair(const AttValPair& attval){
     else if(p_value == NULL){   //  create new attribute if not present
         vector<string> temp_v;  // create a vector for the values
         temp_v.push_back(attval.value); // add the value to the vector.
-        attributes.push_back(attval.attribute); //  add to vector of attr
+        attributes.push_back(attval); //  add to vector of attr
         p_tree.insert(attval.attribute, temp_v); } // add to the radixTree
     
 }
@@ -111,10 +111,23 @@ bool PersonProfile::GetAttVal(int attribute_num, AttValPair& attval) const{
     if(vec_size<=attribute_num) return false;
     if(attribute_num == 0 || vec_size == 0)  return false;
     
+    //-------------------------------------------------------------//
+
+    // Let's get a temp variable to check the last pair attribute.
+    vector<string>* p_temp = p_tree.search(attributes[attribute_num].attribute);
+    
+    for(int i = 0; i < (*p_temp).size(); i++){
+        if((*p_temp)[i] == attributes[attribute_num].value){    // We found it!
+            
+            //  Once found, we copy into the attval reference
+            attval.attribute = attributes[attribute_num].attribute;
+            attval.value = (*p_temp)[i];
+            
+            return true;    //  Found, so we return true.
+        }
+        
+    }
     
     
-    
-    
-    
-    return true;
+    return false;   //  Did not find it, so we return false.
 }

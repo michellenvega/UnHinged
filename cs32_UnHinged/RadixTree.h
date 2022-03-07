@@ -28,12 +28,25 @@ public:
         delete root;
     }*/
  void insert(std::string key, const ValueType& value);
- ValueType* search(std::string key) const;
-    map<string,ValueType> m_map;
     
+    ValueType* search(std::string key) const{
+        typename map<string, ValueType*> :: const_iterator it;
+
+        it = m_map.find(key);
+
+        if (it == m_map.end()) {
+            return nullptr;
+        }
+
+        else {
+            return it->second;
+        }
+    }
+   
     
 private:
-   
+    map<string,ValueType*> m_map;
+    
     
     /*
     class Node {
@@ -88,7 +101,8 @@ private:
 };
 template <typename ValueType>
 void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
-    m_map.insert(pair<string,ValueType>(key,value));
+    ValueType* tval = new ValueType(value);
+    m_map.insert(pair<string,ValueType*>(key,tval));
 }
 
 template <typename ValueType>
@@ -110,16 +124,6 @@ int RadixTree<ValueType>::alphaCount (string key){
 }
 
 
-
-
-template <typename ValueType>
-ValueType* RadixTree<ValueType>::search(std::string key) const{
-    
-    typename std::map<std::string,ValueType>::iterator it;
-    it = m_map.find(key);
-    return it->second;
-    
-}
 
 
 

@@ -35,7 +35,7 @@ public:
      bool GetAttVal(int attribute_num, AttValPair& attval) const;
 private:
     string m_name, m_email; //  To store each person's information.
-    vector<string>attributes;   //  To keep track of each person's attributes.
+    vector<AttValPair>attributes;   //  To keep track of each person's attributes.
     RadixTree<vector<string>>  p_tree;  // EACH VECTORS HOLDS COMPATIBLES
 };
 
