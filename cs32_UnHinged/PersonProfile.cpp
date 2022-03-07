@@ -45,13 +45,13 @@ void PersonProfile::AddAttValPair(const AttValPair& attval){
     // not, do nothing and return.
     // // // // // //  //  //  //  //  //  //  //  //  //  //  //  //
     
-    // ------------------------------------------------------------//
+    //-------------------------------------------------------------//
     
     // check if attval is already in RadixTree
     vector<string>* p_value = p_tree.search(attval.attribute);
     
-    // ------------------------------------------------------------//
-    
+    //-------------------------------------------------------------//
+
     // If it IS in the Radix Tree, we check whether we have duplicate values.
     if(p_value != NULL){
         //  Now, we have to check the vector of strings for a duplicate.
@@ -68,8 +68,8 @@ void PersonProfile::AddAttValPair(const AttValPair& attval){
         
     }
     
-    // ------------------------------------------------------------//
-    
+    //-------------------------------------------------------------//
+
     //  Not present, thus, we add it to the RadixTree and update our vectors.
     else if(p_value == NULL){   //  create new attribute if not present
         vector<string> temp_v;  // create a vector for the values
@@ -79,18 +79,15 @@ void PersonProfile::AddAttValPair(const AttValPair& attval){
     
 }
 
-//  Returns the total number of distinct attribute-value pairs associated with this member.
+
 int PersonProfile::GetNumAttValPairs() const{
-    
-    
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
-    // needs to be of DISTINCT attributes
+    //  Returns the total number of distinct attribute-value pairs
+    //  associated with this member.
     // // // // // //  //  //  //  //  //  //  //  //  //  //  //  //
     
-    
-    
-    // needs to be of DISTINCT attributes
-    
+    //-------------------------------------------------------------//
+
     int size = static_cast<int>(attributes.size());   // get size of vector
     return size;    // return number of att-value pairs
 }
@@ -99,6 +96,20 @@ int PersonProfile::GetNumAttValPairs() const{
 //  This method gets the attribute-value pair specified by attribute_num.
 bool PersonProfile::GetAttVal(int attribute_num, AttValPair& attval) const{
     
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    //  This method gets the attribute-value pair specified by attribute_num.
+    //  The method returns true if it successfully retrieves an attribute;
+    //  otherwise, it returns false and leaves attval unchanged.
+    // // // // // //  //  //  //  //  //  //  //  //  //  //  //  //
+    
+    //-------------------------------------------------------------//
+
+
+    size_t vec_size = attributes.size();    //  Keep track of number of attributes
+    
+    //  Makes sure values are in range. If not, return false.
+    if(vec_size<=attribute_num) return false;
+    if(attribute_num == 0 || vec_size == 0)  return false;
     
     
     
