@@ -29,28 +29,37 @@ string PersonProfile::GetEmail() const{
 
 //  Add a Pair
 void PersonProfile::AddAttValPair(const AttValPair& attval){
+ 
     
-//  can have same attribute, but must also have different value
+    vector<string>* val = p_tree.search(attval.attribute);
     
-    p_att.insert(attval.attribute, attval.value);    // insert the pair into the radix tree
-    attributes[numOfPairs] = attval.attribute;
-    numOfPairs++;
+    //  create new attribute if not present
+    
+    
+    //  check if there is a duplicate
+    
+    
+    //  if there is, check if the values are the same
+            //  if they are, do nothing
+            //  if they arent, add the pair!
+    
+    
+    
     
 }
 
 //  Returns the total number of distinct attribute-value pairs associated with this member.
 int PersonProfile::GetNumAttValPairs() const{
-    return numOfPairs;
+    // needs to be of DISTINCT attributes
+    
+    int size = static_cast<int>(attributes.size());   // get size of vector
+    return size;    // return number of att-value pairs
 }
 
 
 //  This method gets the attribute-value pair specified by attribute_num.
 bool PersonProfile::GetAttVal(int attribute_num, AttValPair& attval) const{
-    if(attribute_num > numOfPairs) return false;    //   not in range
     
-    attval.attribute = attributes[attribute_num];   //   set key string
-    
-    attval.value = *(p_att.search(attval.attribute));  //   set value string
     
     return true;
 }

@@ -35,8 +35,7 @@ public:
      bool GetAttVal(int attribute_num, AttValPair& attval) const;
 private:
     string m_name, m_email;
-    RadixTree<string>  p_att;
-    int numOfPairs = 0;
+    RadixTree<vector<string>>  p_tree;
     vector<string>attributes;
 };
 

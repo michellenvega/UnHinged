@@ -65,8 +65,8 @@ bool AttributeTranslator::Load(string filename){
         }
  
         //check this again once you fix your radix tree!!!
-        t_source.insert(att_1, val_1);
-        t_comp.insert(att_2, val_2);
+       // t_source.insert(att_1, val_1);
+       // t_comp.insert(att_2, val_2);
     }
     
     
@@ -81,12 +81,7 @@ vector<AttValPair> AttributeTranslator::FindCompatibleAttValPairs(const AttValPa
     
     vector<AttValPair> m_pairs;
     
-    // pair sources atributes with all their compatible attributes.
-    
-    string s_att = source.attribute;
-    string s_val = source.value;
-    
-// figure this shit out!!
+
     
     
     return m_pairs;
