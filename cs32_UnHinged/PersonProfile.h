@@ -12,14 +12,15 @@
 #include <string>
 #include "AttributeTranslator.h"
 #include "RadixTree.h"
+#include <vector>
 using namespace std;
 
 
-template <typename AttValPair>
+
 class PersonProfile{
 public:
     //  This constructs a PersonProfile object, specifying the member’s name and email address
-    PersonProfile(string name, string email): m_name(name), m_email(email){};
+    PersonProfile(string name, string email);
     //  You may define a destructor for PersonProfile if you need one.
     ~PersonProfile();
     //  The getName method returns the member’s name.
@@ -34,6 +35,9 @@ public:
      bool GetAttVal(int attribute_num, AttValPair& attval) const;
 private:
     string m_name, m_email;
+    RadixTree<string>  p_att;
+    int numOfPairs = 0;
+    vector<string>attributes;
 };
 
 

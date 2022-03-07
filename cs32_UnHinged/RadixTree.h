@@ -11,21 +11,31 @@
 
 #include <string>
 #include <vector>
+#include <map>
 using namespace std;
 
 template <typename ValueType>
 class RadixTree {
 public:
     RadixTree(){
+        
+    }
+    /*
+    RadixTree(){
         root = new Node();
     }
     ~RadixTree(){
         delete root;
-    }
+    }*/
  void insert(std::string key, const ValueType& value);
  ValueType* search(std::string key) const;
+    map<string,ValueType> m_map;
+    
     
 private:
+   
+    
+    /*
     class Node {
     public:
         // info
@@ -46,7 +56,10 @@ private:
 
         Node(std::string k, ValueType v)
          {
-            n_key = k +'$';
+            if(n_key[n_key.size()] != '$')
+                n_key = k +'$';
+            else
+                n_key = k;
             n_val = v;
             for (int i = 0; i < 26; i++) {
                 children[i] = NULL;
@@ -62,121 +75,158 @@ private:
         };
     
     Node* root;
+     */
+    
+    
+    
+    
+    int alphaCount (string key);
+    bool splitKeys(string &main, string &second);
+    
+    
+    
 };
+template <typename ValueType>
+void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
+    m_map.insert(pair<string,ValueType>(key,value));
+}
+
+template <typename ValueType>
+bool RadixTree<ValueType>::splitKeys(string &main, string &second){ // if we need to split, then split
+    
+    return 1;
+    
+}
 
 
-
-
-/*
- for insert:
- 
- depends on length of key!!1 thats time complexity
- so:
- - based on str.length() in a loop
- - once we hit a '$', go into node of pos of the next str letter
- - if it does not match, we will change nodes to include it (tricky)
- - if it does match, keep going until we find a non-match
- 
- */
-
-
-
-
-
+template <typename ValueType>
+int RadixTree<ValueType>::alphaCount (string key){
+    
+    int count = 0;
+    for(int i =0; i < key.size(); i++)
+        if(key[i] != '$')
+            count++;
+    return count;
+}
 
 
 
 
 template <typename ValueType>
-void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
+ValueType* RadixTree<ValueType>::search(std::string key) const{
     
-     // we have a simple trie tree rght now
-     // now we just need to GROUP words!!!
+    typename std::map<std::string,ValueType>::iterator it;
+    it = m_map.find(key);
+    return it->second;
+    
+}
+
+
+
+/*
+template <typename ValueType>
+void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
+
     int count = 0;
     string leftover;
     bool longerKey = false;
-     Node * current = root;
+    Node * current = root;
     current->end_of_word = false;
-             for (int i = 0; i < key.size(); i++) {
-                 // find first letter of given key
-                 int pos = key.at(i)-'a';
-                 // if at letter, no other word, then add node
-                 if (current->children[pos] == NULL && count == 0) {
-                     current->children[pos] = new Node(key, value); // make new node
-                     current->children[pos]->parent = current; // ???
-                     return;
-                 }
-                 else{
-                     // if at letter, no rest of word, then SPLIT!
-                     // might change this into a function later to make it easier
-                     if (current->children[pos] == NULL && count > 0) {
-                         // which ever one is the smallest???
-                         // we then split it?
-                         // if leftover == 0 then...
-                         string newstr, tempstr;
-                         if(longerKey == false){
-                          newstr = leftover;  // the extra, ex: 'er'
-                          tempstr = current->n_key;   // current key
-                         current->n_key = tempstr;
-                         }
-                         else{
-                              newstr = leftover;   // current key
-                              tempstr = current->n_key;  // the extra, ex: 'er'
-                             current->n_key = tempstr.substr(0, tempstr.size()-newstr.size()) + '$';
-                         }
-                         Node * tempOne = current; // current key
-                         Node * temp = current->parent;// the parent
-                         
-                         current = tempOne;
-                    if(current != root)
-                         current->parent = temp->parent; // curr's parent is its old parents' parent
-                         
-                         pos = newstr[0] - 'a'; // find position
-                         current->children[pos] = new Node(newstr.substr(0, newstr.size()), value); // add new node in children
-                         
-                         tempOne->parent=NULL;
-                         tempOne = NULL;
-                        return;
-                     }
-                     // if we reached the end n_key or given key, set bool to true
-                     if((count ==current->children[pos]->n_key.size() )|| count  == key.size())
-                         current->end_of_word = true;
-                     
-                     // if not at end of word, but we have matching consecutive letters, add to count
-                     if(!current->end_of_word && current->children[pos]->n_key[i] == key[i]) {
-                         count++;
-                         
-                         
-                         // need to change how I will get leftover
-                         // right it works if: adding bigger word to smaller word
-                         // ^ ex: we have 'slow' but want to add slower
-                         // we need: we have 'slower' but want to add 'slow'
-                         // need to put in good use the $
-                         if(key.size() >= current->children[pos]->n_key.size())
-                             leftover = key.substr(count-1, key.size());
-                         else{
-                            leftover = (current->children[pos]->n_key).substr(count, (current->children[pos]->n_key).size());
-                             longerKey = true; // we say that we need the operations reversed for this!
-                         }
-                     }
-
-                     
-                     
-                 }
-                 
-                 // if we are at the end of the word, move into the tree
-                 if(current->end_of_word){
-                 current = current->children[pos];
-                     
-                 }else i--;
-             }
+    for (int i = 0; i < key.size(); i++) {
+        // find first letter of given key
+        int pos = key.at(i)-'a';
+        // if at letter, no other word, then add node
+        if (current->children[pos] == NULL && count == 0) {
+            current->children[pos] = new Node(key, value); // make new node
+            current->children[pos]->parent = current; // ???
+            return;
+        }
+        else{
+            if(current->children[pos] != NULL){
+                
+                
+                // if not at end of word, but we have matching consecutive letters, add to count
+                if(!current->end_of_word && current->children[pos]->n_key[count] == key[count]) {
+                    count++;
+                    // if we reached the end n_key or given key, set bool to true
+                    
+                    // need to change how I will get leftover
+                    // right it works if: adding bigger word to smaller word
+                    // ^ ex: we have 'slow' but want to add slower
+                    if(alphaCount(key) > alphaCount(current->children[pos]->n_key))
+                        leftover = key.substr(count, alphaCount(key));
+                    else{
+                        // we need: we have 'slower' but want to add 'slow'
+                        
+                        leftover = (current->children[pos]->n_key).substr(count, alphaCount(current->children[pos]->n_key));
+                        longerKey = true; // we say that we need the operations reversed for this!
+                    }
+                }
+                
+                if((count == alphaCount(current->children[pos]->n_key))||
+                   count  == alphaCount(key) || current->children[pos]->n_key[count] != key[count])
+                    current->end_of_word = true;
+                
+            }
+            
+            // if at letter, no rest of word, then SPLIT!
+            // might change this into a function later to make it easier
+            if (current->children[pos] == NULL && count > 0) {
+                // which ever one is the smallest???
+                // we then split it?
+                // if leftover == 0 then...
+                string newstr, tempstr;
+                if(longerKey == false){
+                    newstr = leftover;  // the extra, ex: 'er'
+                    tempstr = current->n_key;   // current key
+                }
+                else{
+                    newstr = leftover;   // current key
+                    tempstr = current->n_key;  // the extra, ex: 'er'
+                    if( current->n_key[ current->n_key.size()] != '$')
+                        current->n_key = tempstr.substr(0, tempstr.size()-newstr.size()) + '$';
+                    else
+                        current->n_key = tempstr.substr(0, tempstr.size()-newstr.size());
+                    
+                }
+                Node * tempOne = current; // current key
+                Node * temp = current->parent;// the parent
+                
+                current = tempOne;
+                
+                if(current != root)
+                    current->parent = temp->parent; // curr's parent is its old parents' parent
+                
+                pos = newstr[0] - 'a'; // find position
+                current->children[pos] = new Node(newstr.substr(0, newstr.size()), value); // add new node in children
+                
+                tempOne->parent=NULL;
+                tempOne = NULL;
+                
+                return;
+            }
+        } // end of else
+        
+        
+        
+        // if we are at the end of the word, move into the tree
+        if(current->end_of_word){
+            current = current->children[pos];
+            
+        } else
+            i--;
+    }
     
     // set this just for formality, will change later!
-             current->end_of_word = true;
-     
+    current->end_of_word = true;
+    
      
     
 }
+
+
+*/
+/*
 
 template <typename ValueType>
 ValueType* RadixTree<ValueType>::search(std::string key) const{
@@ -198,9 +248,17 @@ ValueType* RadixTree<ValueType>::search(std::string key) const{
 
 
 
+template <typename ValueType>
+void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
+    
+    
+    
+    
+    
+    
+}
 
-
-
+*/
 
 
 #endif /* RadixTree_h */

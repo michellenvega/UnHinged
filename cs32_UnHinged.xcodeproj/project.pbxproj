@@ -28,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		7486E7A027D069F200C5BF68 /* provided.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = provided.h; sourceTree = "<group>"; };
+		7495A64227D5619C0091B38D /* translator.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = translator.txt; path = /Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/../../../../../Downloads/Unhinged/translator.txt; sourceTree = "<absolute>"; };
 		74C8153D27D0697000C748D7 /* cs32_UnHinged */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cs32_UnHinged; sourceTree = BUILT_PRODUCTS_DIR; };
 		74C8154027D0697000C748D7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		74D2F94827D06B0D00F2779C /* members.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = members.txt; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 				74D2F94927D06B4A00F2779C /* PersonProfile.cpp */,
 				74D2F94A27D06B4A00F2779C /* PersonProfile.h */,
 				74D2F95527D06C0000F2779C /* RadixTree.h */,
+				7495A64227D5619C0091B38D /* translator.txt */,
 			);
 			path = cs32_UnHinged;
 			sourceTree = "<group>";

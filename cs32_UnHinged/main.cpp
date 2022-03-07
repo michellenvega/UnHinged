@@ -85,37 +85,10 @@ bool findMatches(const MemberDatabase& mdb, const AttributeTranslator& at)
 
 int main(){
     
-    RadixTree<int*> r_test;
     
-    r_test.insert("tester",0);
-    r_test.insert("slow",0);
-    r_test.insert("water",0);
-
-    assert(r_test.search("tester"));
-    assert(r_test.search("slow"));
-    assert(r_test.search("water"));
+    // testing attributes
+    AttributeTranslator m_att;
     
-    cout << "passed section 1" << endl;
-    
-    r_test.insert("slower",0);
-    
-    assert(r_test.search("tester"));
-    assert(r_test.search("slow"));
-    assert(r_test.search("water"));
-    assert(r_test.search("slower"));    //  new one
-
-    cout << "passed section 2" << endl;
-    
-    
-    
-    r_test.insert("test",0);
-    
-    
-    cout << "passed section 3" << endl;
-    
-    r_test.insert("team",0);
-    
-    cout << "passed section 4" << endl;
-    
+    m_att.Load("/Users/michellenavarretevega/Downloads/Unhinged/translator.txt");
 }
 
