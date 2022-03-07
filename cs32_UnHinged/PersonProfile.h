@@ -34,13 +34,10 @@ public:
     //  This method gets the attribute-value pair specified by attribute_num.
      bool GetAttVal(int attribute_num, AttValPair& attval) const;
 private:
-    string m_name, m_email;
-    RadixTree<vector<string>>  p_tree;
-    vector<string>attributes;
+    string m_name, m_email; //  To store each person's information.
+    vector<string>attributes;   //  To keep track of each person's attributes.
+    RadixTree<vector<string>>  p_tree;  // EACH VECTORS HOLDS COMPATIBLES
 };
-
-
-
 
 
 #endif /* PersonProfile_h */
