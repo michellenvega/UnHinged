@@ -87,8 +87,10 @@ int main(){
     
     
     // testing attributes
-    AttributeTranslator m_att;
+    MemberDatabase mem;
     
-    m_att.Load("/Users/michellenavarretevega/Downloads/Unhinged/translator.txt");
+    mem.LoadDatabase("/Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/members.txt");
+    
+    
 }
 
