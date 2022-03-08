@@ -51,13 +51,6 @@ private:
     /*
     class Node {
     public:
-        // info
-        std::string n_key;
-        ValueType n_val;
-        // vector of children
-        Node * children [26];
-        Node * parent;
-        bool end_of_word = false;
         Node()
          {
              n_key = "$";
@@ -84,17 +77,17 @@ private:
             for (auto n : children)
                 delete n;
         }
-
+private:
+     vector<ValueType> suffix;
+     std::string n_key;
+     ValueType n_val;
+     int count;
+     Node * preFix [26];  //  prefix
+     bool end_of_word = false;  // is_leaf
         };
     
     Node* root;
      */
-    
-    
-    
-    
-    int alphaCount (string key);
-    bool splitKeys(string &main, string &second);
     
     
     
@@ -104,28 +97,6 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
     ValueType* tval = new ValueType(value);
     m_map.insert(pair<string,ValueType*>(key,tval));
 }
-
-template <typename ValueType>
-bool RadixTree<ValueType>::splitKeys(string &main, string &second){ // if we need to split, then split
-    
-    return 1;
-    
-}
-
-
-template <typename ValueType>
-int RadixTree<ValueType>::alphaCount (string key){
-    
-    int count = 0;
-    for(int i =0; i < key.size(); i++)
-        if(key[i] != '$')
-            count++;
-    return count;
-}
-
-
-
-
 
 /*
 template <typename ValueType>
@@ -248,18 +219,6 @@ ValueType* RadixTree<ValueType>::search(std::string key) const{
     ValueType* value = &  (current->n_val);
     return value;
  
-}
-
-
-
-template <typename ValueType>
-void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
-    
-    
-    
-    
-    
-    
 }
 
 */

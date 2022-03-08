@@ -30,6 +30,7 @@ bool MemberDatabase::LoadDatabase(std::string filename){
     string oneLine; // To look at each line, one at a time
     
     //-------------------------------------------------------------//
+    
     string m_name, m_email, m_pair, m_attribute, m_value;
     int numPairs = 0;   int lineCount = 1;
 
@@ -97,9 +98,33 @@ bool MemberDatabase::LoadDatabase(std::string filename){
 }
 
 
-//  use email to get pairs
-// P = num of pairs
-// M = num of members
-// BIG-O: O(logP + M) is acceptable so
-//  => logP, insertion pairs into vector is O(1)
-//      => and into the radix tree is O(K), k is max length
+std::vector<std::string> MemberDatabase::FindMatchingMembers(const AttValPair& input) const{
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    //  Now, lets take input's val and attribute and return members
+    //  who have the same attributes. If there are no such members,
+    //  the vector returned must be empty.
+    // // // // // //  //  //  //  //  //  //  //  //  //  //  //  //
+    
+    //-------------------------------------------------------------//
+    
+    string check_pair = input.attribute + ',' + input.value;    // Concatenate the pair string
+
+    return *member_attr.search(check_pair); //  It will return the vector of strings
+}
+
+const PersonProfile*  MemberDatabase::GetMemberByEmail(std::string email) const{
+    //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+    //  Now, lets look to obtain a member's information with just
+    //  their email
+    // // // // // //  //  //  //  //  //  //  //  //  //  //  //  //
+    
+    //-------------------------------------------------------------//
+    
+    //  Here, if we get a NULLPTR, we know there is no data for a member with that email.
+    if ((member_emails.search(email)) == nullptr) {
+        return nullptr;
+    }
+
+    //  Otherwise, we return the profile of the member with that email
+    return (member_emails.search(email));
+}
