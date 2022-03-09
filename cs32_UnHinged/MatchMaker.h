@@ -13,6 +13,8 @@
 #include "provided.h"
 #include "MemberDatabase.h"
 #include "AttributeTranslator.h"
+#include <unordered_set>
+#include <string>
 
 using namespace std;
 
@@ -23,8 +25,8 @@ public:
     vector<EmailCount> IdentifyRankedMatches(string email, int threshold) const;
     
 private:
-    
-    
+    MemberDatabase* m_mdb;  //  Keep track of all the members
+    AttributeTranslator* m_at;  //  Keep track of all the attributes
 };
 
 
