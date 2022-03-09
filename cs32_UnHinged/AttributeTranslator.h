@@ -36,7 +36,7 @@ public:
 
 private:
     //  We need to store >> "source_attribute, source_value, compatible_attribute, compatible_value"
-    RadixTree<vector<AttValPair>> comp_pairs;
+    RadixTree<vector<AttValPair>> att_pairs;
 };
 
 
