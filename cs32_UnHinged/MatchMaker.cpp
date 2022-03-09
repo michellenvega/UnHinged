@@ -47,14 +47,13 @@ MatchMaker::~MatchMaker(){
      //  //  //  //  //  //  //  //  //  //  //  //  // //  //  //  //  //  //
      
      //-----------------------------------------------------------------//
-     
       
      // Look up the attributes of a member using the email
     const PersonProfile* profile = m_mdb->GetMemberByEmail(email);
      
      // To store all the information we need
      vector<EmailCount> email_vec;
-     unordered_set<std::string> comp_set;
+     unordered_set<AttValPair> comp_set;   // attributes
      
      // First, get all attributes of this profile
      int total_att = profile->GetNumAttValPairs();  //  Total num of attributes
@@ -69,10 +68,12 @@ MatchMaker::~MatchMaker(){
          
     //-----------------------------------------------------------------//
 
-         // Now we add each compatible into set of strings for easy access
+        // Now we add each compatible into set of strings for easy access
+    
          for(int j = 0; j < comp_vec.size(); j++){
          AttValPair c_pair = comp_vec[i];
-         comp_set.insert(c_pair.attribute + ',' + c_pair.value);
+         comp_set.insert(c_pair);
+
          }
          
      }  // <= end of first for-loop
@@ -81,13 +82,20 @@ MatchMaker::~MatchMaker(){
 
      // Then, we obtain all compatible members
      unordered_set<std::string> email_set;  //  To keep track of emails
+     
      // find matching members!
-     unordered_set<std::string>::iterator it = comp_set.begin();
+     unordered_set<AttValPair>::iterator it = comp_set.begin();
      for( ; it != comp_set.end(); it++){
-           
+         vector<string> compad_e = m_mdb->FindMatchingMembers(*it); // Get emails related to each pair
+         for(int k = 0; k < compad_e.size(); k++)
+             email_set.insert(compad_e[k]); 
        }
      
      
+     //-----------------------------------------------------------------//
+     
+     // Now we check how many times an email shows up
+            //  This is how we see which member is more compatible!
      
      
      //Then, sort then by 'smallest to greatest'
@@ -99,7 +107,7 @@ MatchMaker::~MatchMaker(){
         //  use get num of att val pairs
      
      // Add these members to the vector in order and return.
-        //  In order!
+        //  In descending order
      
      
      
