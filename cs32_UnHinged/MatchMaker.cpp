@@ -4,7 +4,7 @@
 //
 //  Created by Michelle Navarrete on 3/2/22.
 //
-
+/*
 #include "MatchMaker.h"
 #include <string>
 
@@ -94,27 +94,57 @@ MatchMaker::~MatchMaker(){
      
      //-----------------------------------------------------------------//
      
-     // Now we check how many times an email shows up
-            //  This is how we see which member is more compatible!
-     
-     
-     //Then, sort then by 'smallest to greatest'
-        // Check that order^ idk if its supposed to be like that
-     
-     
-     // Identify a rank order of other members with at least same
-        //  threshold of compatible attributes
-        //  use get num of att val pairs
-     
-     // Add these members to the vector in order and return.
-        //  In descending order
-     
-     
-     
-    //  -----------------------------------------------  //
-     
-     
-    return std::vector<EmailCount>();
-    
-}
+     // Let's check how many times an email shows up (has to be more than threshold)
+     //  This is how we see which member is more compatible!
+     unordered_set<std::string>::iterator e_it = email_set.begin();
+     for( ; e_it != email_set.end(); e_it++){
+          const PersonProfile* person = m_mdb->GetMemberByEmail(*e_it);
+          int counter = 0;  //  To keep track of how many times this perso shows up
+         
 
+          for(int n = 0; n < person->GetNumAttValPairs(); n++){
+              AttValPair potentialAttPair;
+              person->GetAttVal(n, potentialAttPair);
+              
+              if(comp_set.find(potentialAttPair) != comp_set.end())
+                    counter ++;
+                    
+          } // <= end of second for-loop
+         
+         //-----------------------------------------------------------------//
+         
+          if(threshold <= counter) {    //  Can only be added if seen at least 'threshold' of times
+                    EmailCount a_email(*e_it,counter);
+                    email_vec.push_back(a_email); //  Add it to the vector
+          }
+         
+     }  //  <= end of first for-loop
+         
+     //-----------------------------------------------------------------//
+     
+     //Then, sort so it is in a descending order!!
+     
+                    sort(email_vec.begin(),email_vec.end(), descending);
+     
+     //-----------------------------------------------------------------//
+
+     
+     return email_vec;
+         
+     }
+
+bool MatchMaker::descending(const EmailCount& e1, const EmailCount& e2){
+    
+    //  //  //  //  //  //  //  //  //  //  //  //  //
+    //  If count is the same, we have to sort by the
+    //  alphabet!!!
+    //  //  //  //  //  //  //  //  //  //  //  //  //
+    
+    //------------------------------------------------//
+    
+    if(e1.count==e2.count)  //  If count the same
+        return e1.email>e2.email;   //  Return alphabetized
+    
+    return e1.count>e2.count;   // Otherwise return based on count
+}
+*/

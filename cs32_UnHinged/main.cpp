@@ -86,11 +86,8 @@ bool findMatches(const MemberDatabase& mdb, const AttributeTranslator& at)
 int main(){
     
     
-    // testing attributes
-    MemberDatabase mem;
+    RadixTree<int> testing;
     
-    mem.LoadDatabase("/Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/members.txt");
-    
-    
+    testing.insert("hello", 2);
 }
 

@@ -24,7 +24,7 @@ PersonProfile::~PersonProfile(){
     
     
 }
-
+/*
 //  Get Name
 string PersonProfile::GetName() const{
     return m_name;
@@ -132,3 +132,4 @@ bool PersonProfile::GetAttVal(int attribute_num, AttValPair& attval) const{
     
     return false;   //  Did not find it, so we return false.
 }
+*/

@@ -27,6 +27,7 @@ public:
 private:
     MemberDatabase* m_mdb;  //  Keep track of all the members
     AttributeTranslator* m_at;  //  Keep track of all the attributes
+    static bool descending(const EmailCount& e1, const EmailCount& e2);
 };
 
 
