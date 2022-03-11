@@ -38,10 +38,7 @@ private:
         }
         
         bool addNode(Node * n, string key, ValueType m_value) {
-        for (int i = 0; i < counter; i++) {
-                      if (prefix[i] == n)
-                       return false;
-           }
+
             int pos = key[0] - 'a';
             prefix[pos] = n;
            prefix[pos]->setKeyNode(key);
@@ -65,6 +62,7 @@ private:
             return counter;}
         
         string getKey() {
+
             return n_key;}
         
         bool getLeaf() {
@@ -114,7 +112,7 @@ private:
         bool end_of_word = true;  // is it a leaf
         ValueType* n_val;
         string n_key;
-        int counter;
+        int counter = 0;
         };
 
     Node* root;
@@ -143,7 +141,6 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
         Node * n_root = new Node(nullptr); //  We make new pointer at a new Node.
         n_root->setKeyNode(key);  //  We store the given value
         root->addNode(n_root, key, value);   //  Add new Node;
-        root->setEndofWord(false);  //  No longer end of word aka leaf
         return;
     }
     
@@ -169,12 +166,10 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
 
          
     //  Case 3: The prefix and given word have a match in a PART of the prefix, same length
-                
+            int shared = 0; int size_t = 0;
                 if(key.size() == temp->prefix[pos]->getKey().size()){
                     //  How many letters do they share?
-                    temp->splitNodes(temp->prefix[pos], key, value, key.size());
-                    cout << "here" << endl;
-                    return;
+                    size_t = key.size();
                 }
                 
     //------------------------------------------------------------------------------//
@@ -184,16 +179,19 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
                 //      b   => leftover in the given word
                 else if(key.size() != temp->prefix[pos]->getKey().size()){
                     //  Find shared letters
-                    int shared = 0; int size_t = 0;
+                
                     //  Find size for loop
                     if(key.size() > temp->prefix[pos]->getKey().size())
                          size_t = temp->prefix[pos]->getKey().size();
                     else
                         size_t = key.size();
-                        
+                }   //  <= end of else if for different sizes
+        
+        
+        
                     for( int  j = 0; j < size_t; j++ ){         //  Let's iterate through the array.
                         if(key[j] !=  temp->prefix[pos]->getKey()[j])
-                            return;
+                            break;
                         else
                             shared++;
                     }   //  <=  end of for-loop
@@ -204,7 +202,7 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
                     
                     
                     
-                }   //  <= end of else if for different sizes
+               
                 
         
 

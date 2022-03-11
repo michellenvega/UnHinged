@@ -88,12 +88,30 @@ int main(){
     
     RadixTree<int> testing;
 
-    //  If same key, just change the value!
-    testing.insert("hello", 2);
-    testing.insert("helio", 3);
-    
+    //  test case 1
+    testing.insert("test", 2);
+    testing.insert("slow", 3);
     testing.insert("water", 5);
-    testing.insert("waterloo", 6);
+    
+    cout << "finished test case 1" << endl;
+    
+    testing.insert("slower", 1);
+    
+    cout << "finished test case 2" << endl;
+
+    RadixTree<int> fruits;
+    
+    fruits.insert("watermelon", 9);
+    fruits.insert("water", 5);
+
+    cout << "finished test case 3" << endl;
+    
+    
+    fruits.insert("test", 5);
+    fruits.insert("team", 2);
+    //fruits.insert("tell", 7);
+    
+    cout << "finished test case 4" << endl;
     
     
 }
