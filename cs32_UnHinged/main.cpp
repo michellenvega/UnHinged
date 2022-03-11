@@ -87,7 +87,14 @@ int main(){
     
     
     RadixTree<int> testing;
-    
+
+    //  If same key, just change the value!
     testing.insert("hello", 2);
+    testing.insert("helio", 3);
+    
+    testing.insert("water", 5);
+    testing.insert("waterloo", 6);
+    
+    
 }
 
