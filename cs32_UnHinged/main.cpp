@@ -113,6 +113,16 @@ int main(){
     
     cout << "finished test case 4" << endl;
     
+    RadixTree<AttValPair> mypairs;
+    
+    AttValPair onepair ("hair", "brown");
+    AttValPair changepair ("hair", "red");
+    
+    mypairs.insert("love", onepair);
+    mypairs.insert("love", changepair);
+    
+    cout << "finished test case 5" << endl;
+    
     
 }
 

@@ -23,29 +23,28 @@ private:
 
     class Node {
     public:
-        Node(ValueType* val_p)
+        Node(ValueType* val_p):counter(0)
         {
-            n_key = "";
             n_val = val_p;
-            counter = 0;
-            end_of_word = true;
         }
         
         ~Node(){    //  Double check this
-            for (auto n : prefix)
-                delete n;
-            delete n_val;
+
         }
         
         bool addNode(Node * n, string key, ValueType m_value) {
-
+            for (int i = 0; i < 26; i++) {
+                if (prefix[i] == n)
+                    return false;
+            }
             int pos = key[0] - 'a';
+            if(n!=nullptr){
             prefix[pos] = n;
-           prefix[pos]->setKeyNode(key);
+            prefix[pos]->setKeyNode(key);
             prefix[pos]->setValueNode(m_value);
-                 counter++;
-            n->setEndofWord(false);
-                   return true;
+            counter++;
+            }
+            return true;
               }
         
         
@@ -61,15 +60,13 @@ private:
         int getNum() {
             return counter;}
         
-        string getKey() {
-
-            return n_key;}
-        
         bool getLeaf() {
             return end_of_word;}
         
-        ValueType getValue() {
-            return *n_val;}
+        ValueType* getValue() {
+            if(n_val == NULL)
+                return nullptr;
+            return n_val;}
         
         void setEndofWord(bool end) {
             end_of_word = end;}
@@ -82,36 +79,46 @@ private:
             bool given = false; //  Given key is too long => true
             
             //  Find how much leftover and which one
-            if(key.size() > t->getKey().size()){
+            if(key.size() > t->n_key.size()){
                 given = true;
-                leftover = key.size()  - t->getKey().size();
+                leftover = key.size()  - t->n_key.size();
             } else {
-                leftover = t->getKey().size() - key.size();
+                leftover = t->n_key.size() - key.size();
             }
             
             //  Now we add new nodes
             Node * given_Node = new Node(&val);
+            given_Node->setEndofWord(true);
+
            t->addNode(given_Node, key.substr(share, key.size()), val);
             //-------------------------------------------------
-            string n_key = t->getKey();
-            ValueType new_val =  ( t->getValue() );
+            string n_key = t->n_key;
+            ValueType new_val =  *( t->getValue() );
             Node * orig_Node = new Node(&new_val);
-            t->addNode(orig_Node, n_key.substr(share, n_key.size()) , orig_Node->getValue());
+            orig_Node->setEndofWord(true);
+            t->addNode(orig_Node, n_key.substr(share, n_key.size()) , *(orig_Node->getValue()) );
+
             
             
-            //  Set n's value to nothing!!
+            //  Set n's key
+            t->setKeyNode(t->n_key.substr(0, share));
+            t->setEndofWord(false);
+            delete t->getValue();
+            //  Now, we decide the value
             
-            t->setKeyNode(t->getKey().substr(0, share));
-          //  t->setValueNode(nullptr);
+            ValueType* tem_v = orig_Node->getValue();
+            if(n_key > key) {    //  If node's key is longer
+                t->setValueNode(val);
+            }
         }
         
         vector<ValueType> suffix;
         Node * prefix [26];  //  prefix
+        string n_key = "$";
 private:
 
-        bool end_of_word = true;  // is it a leaf
+        bool end_of_word = false;  // is it a leaf
         ValueType* n_val;
-        string n_key;
         int counter = 0;
         };
 
@@ -126,7 +133,7 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
     //  Special Cases to look at:
     //  1. The tree is empty => we add the node as the root
-    //  2.Both prefix and given word match perfectly.
+    //  2. Both prefix and given word match perfectly.
     //  3. The prefix and given word have a match in a PART of the prefix, same length
     //  4. The prefix matches a first part of the word, but there is extra letters.
     //      => leftover in the prefix
@@ -141,6 +148,14 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
         Node * n_root = new Node(nullptr); //  We make new pointer at a new Node.
         n_root->setKeyNode(key);  //  We store the given value
         root->addNode(n_root, key, value);   //  Add new Node;
+        root->setEndofWord(true);
+        return;
+    }
+    else if(root->prefix[pos]->getValue() == NULL){
+        Node * n_root = new Node(nullptr); //  We make new pointer at a new Node.
+        n_root->setKeyNode(key);  //  We store the given value
+        root->addNode(n_root, key, value);   //  Add new Node;
+        root->setEndofWord(true);
         return;
     }
     
@@ -151,12 +166,11 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
         
         
         Node* temp = root;
-        int count = 0;
         int pos = key[0] - 'a';
                 
     //  Case 2: Prefix and key are the exact same!
                 
-                if(key == temp->prefix[pos]->getKey()){
+                if(key == temp->prefix[pos]->n_key){
                     temp = temp->prefix[pos];
                     temp->setValueNode(value);
                     return;
@@ -167,7 +181,7 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
          
     //  Case 3: The prefix and given word have a match in a PART of the prefix, same length
             int shared = 0; int size_t = 0;
-                if(key.size() == temp->prefix[pos]->getKey().size()){
+                if(key.size() == temp->prefix[pos]->n_key.size()){
                     //  How many letters do they share?
                     size_t = key.size();
                 }
@@ -177,12 +191,12 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
     //  Case 4: The prefix matches a first part of the word, but there is extra letters.
                 //      a   => leftover in the prefix
                 //      b   => leftover in the given word
-                else if(key.size() != temp->prefix[pos]->getKey().size()){
+                else if(key.size() != temp->prefix[pos]->n_key.size()){
                     //  Find shared letters
                 
                     //  Find size for loop
-                    if(key.size() > temp->prefix[pos]->getKey().size())
-                         size_t = temp->prefix[pos]->getKey().size();
+                    if(key.size() > temp->prefix[pos]->n_key.size())
+                         size_t = temp->prefix[pos]->n_key.size();
                     else
                         size_t = key.size();
                 }   //  <= end of else if for different sizes
@@ -190,28 +204,20 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
         
         
                     for( int  j = 0; j < size_t; j++ ){         //  Let's iterate through the array.
-                        if(key[j] !=  temp->prefix[pos]->getKey()[j])
+                        if(key[j] !=  temp->prefix[pos]->n_key[j])
                             break;
                         else
                             shared++;
                     }   //  <=  end of for-loop
                      
+        
+    //------------------------------------------------------------------------------//
+        
                   //    Now we split!
-                    
                     temp->splitNodes(temp->prefix[pos], key, value, shared);
-                    
-                    
-                    
-               
-                
-        
 
-        
-        
     }   //  <= end of if root Num != 0
     
-
-
     
     //------------------------------------------------------------------------------//
 
