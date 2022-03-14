@@ -11,7 +11,7 @@ MemberDatabase::MemberDatabase(){}
 
 MemberDatabase::~MemberDatabase(){}
 
-/*
+
 bool MemberDatabase::LoadDatabase(std::string filename){
 
     //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
@@ -128,4 +128,4 @@ const PersonProfile*  MemberDatabase::GetMemberByEmail(std::string email) const{
     //  Otherwise, we return the profile of the member with that email
     return (member_emails.search(email));
 }
-*/
+

@@ -4,7 +4,7 @@
 //
 //  Created by Michelle Navarrete on 3/2/22.
 //
-/*
+
 #include "MatchMaker.h"
 #include <string>
 
@@ -53,7 +53,8 @@ MatchMaker::~MatchMaker(){
      
      // To store all the information we need
      vector<EmailCount> email_vec;
-     unordered_set<AttValPair> comp_set;   // attributes
+     /*
+     set<AttValPair> comp_set;   // attributes
      
      // First, get all attributes of this profile
      int total_att = profile->GetNumAttValPairs();  //  Total num of attributes
@@ -71,8 +72,8 @@ MatchMaker::~MatchMaker(){
         // Now we add each compatible into set of strings for easy access
     
          for(int j = 0; j < comp_vec.size(); j++){
-         AttValPair c_pair = comp_vec[i];
-         comp_set.insert(c_pair);
+         const AttValPair c_pair (comp_vec[i].attribute, comp_vec[i].value);
+         comp_set.insert(comp_vec[i]);
 
          }
          
@@ -81,10 +82,10 @@ MatchMaker::~MatchMaker(){
      //-----------------------------------------------------------------//
 
      // Then, we obtain all compatible members
-     unordered_set<std::string> email_set;  //  To keep track of emails
+     set<std::string> email_set;  //  To keep track of emails
      
      // find matching members!
-     unordered_set<AttValPair>::iterator it = comp_set.begin();
+     set<AttValPair>::iterator it = comp_set.begin();
      for( ; it != comp_set.end(); it++){
          vector<string> compad_e = m_mdb->FindMatchingMembers(*it); // Get emails related to each pair
          for(int k = 0; k < compad_e.size(); k++)
@@ -96,7 +97,7 @@ MatchMaker::~MatchMaker(){
      
      // Let's check how many times an email shows up (has to be more than threshold)
      //  This is how we see which member is more compatible!
-     unordered_set<std::string>::iterator e_it = email_set.begin();
+     set<std::string>::iterator e_it = email_set.begin();
      for( ; e_it != email_set.end(); e_it++){
           const PersonProfile* person = m_mdb->GetMemberByEmail(*e_it);
           int counter = 0;  //  To keep track of how many times this perso shows up
@@ -128,8 +129,10 @@ MatchMaker::~MatchMaker(){
      
      //-----------------------------------------------------------------//
 
-     
+     */
      return email_vec;
+     
+     
          
      }
 
@@ -142,9 +145,9 @@ bool MatchMaker::descending(const EmailCount& e1, const EmailCount& e2){
     
     //------------------------------------------------//
     
-    if(e1.count==e2.count)  //  If count the same
-        return e1.email>e2.email;   //  Return alphabetized
-    
+    if(e1.count == e2.count) {
+        return e1.email<e2.email;   //  Return alphabetized
+    }
     return e1.count>e2.count;   // Otherwise return based on count
 }
-*/
+

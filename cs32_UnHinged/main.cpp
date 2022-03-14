@@ -9,10 +9,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-const std::string MEMBERS_FILE    = "members.txt";
-const std::string TRANSLATOR_FILE = "translator.txt";
 /*
+const std::string MEMBERS_FILE    = "/Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/members.txt";
+const std::string TRANSLATOR_FILE = "/Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/../../../../../Downloads/Unhinged/translator.txt";
+
 bool findMatches(const MemberDatabase& mdb, const AttributeTranslator& at);
 
 int main() {
@@ -81,6 +81,7 @@ bool findMatches(const MemberDatabase& mdb, const AttributeTranslator& at)
     std::cout << std::endl;
     return true;
 }
+
 */
 
 int main(){
@@ -109,20 +110,23 @@ int main(){
     
     fruits.insert("test", 5);
     fruits.insert("team", 2);
-    //fruits.insert("tell", 7);
-    
-    cout << "finished test case 4" << endl;
-    
-    RadixTree<AttValPair> mypairs;
-    
-    AttValPair onepair ("hair", "brown");
-    AttValPair changepair ("hair", "red");
-    
-    mypairs.insert("love", onepair);
-    mypairs.insert("love", changepair);
-    
-    cout << "finished test case 5" << endl;
+    fruits.insert("teach", 0);
+    fruits.insert("teacher", 9);
+    cout << "whyyyy" << endl;
     
     
+    RadixTree<int> nametree;
+    
+    nametree.insert("hello", 2);
+    nametree.insert("hellfire",6);
+    nametree.insert("yo",5);
+    nametree.insert("your",3);
+     nametree.insert("yolo",10);
+    cout << "names?" << endl;
+
+
+
 }
+
+
 

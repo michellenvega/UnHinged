@@ -16,7 +16,7 @@ AttributeTranslator :: AttributeTranslator(){
 AttributeTranslator ::~AttributeTranslator(){
     
 }
-/*
+
 //  Destructor
 bool AttributeTranslator::Load(string filename){
     
@@ -104,14 +104,14 @@ vector<AttValPair> AttributeTranslator::FindCompatibleAttValPairs(const AttValPa
     string t_pair = source.attribute + "," + source.value;
     
     
-    //  vector<AttValPair>* m_pairs = att_pairs.search(t_pair);
+  //   vector<AttValPair>* m_pairs = att_pairs.search(t_pair);
     //  To check for later tests...
     /*
     for (int i = 0; i < (*m_pairs).size(); i++) {
 
         cerr << (*att_pairs.search(t_pair))[i].attribute << ", " << (*att_pairs.search(t_pair))[i].value << endl;
-    }
+    }*/
 
     return *att_pairs.search(t_pair);
 }
-*/
+

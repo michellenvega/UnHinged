@@ -10,10 +10,9 @@ template <typename ValueType>
 class RadixTree {
 public:
     RadixTree(){
-        root = new Node(nullptr);
+        root = new Node(nullptr, true);
     }
     ~RadixTree(){
-        delete root;
     }
  void insert(std::string key, const ValueType& value);
     
@@ -23,27 +22,29 @@ private:
 
     class Node {
     public:
-        Node(ValueType* val_p):counter(0)
+        Node(ValueType* val_p, bool root):counter(0)
         {
             n_val = val_p;
+            end_of_word = true;
+            n_key = "$";
+            if(val_p != NULL || root)
+            for (int i=0; i < 26; i++)
+            {
+                prefix[i] = new Node(NULL, false);
+            }
         }
         
         ~Node(){    //  Double check this
 
         }
         
-        bool addNode(Node * n, string key, ValueType m_value) {
-            for (int i = 0; i < 26; i++) {
-                if (prefix[i] == n)
-                    return false;
-            }
+        bool addNode(Node * n, string key, ValueType* m_value) {
             int pos = key[0] - 'a';
-            if(n!=nullptr){
+            n->setKeyNode(key);
+            n->setValueNode(m_value);
             prefix[pos] = n;
-            prefix[pos]->setKeyNode(key);
-            prefix[pos]->setValueNode(m_value);
             counter++;
-            }
+            
             return true;
               }
         
@@ -51,11 +52,8 @@ private:
         void setKeyNode(string key) {
             n_key = key;}
         
-        void setValueNode(ValueType val) {
-            if(n_val == NULL)
-                n_val = new ValueType(val);
-            else
-            *n_val = val;}
+        void setValueNode(ValueType* val) {
+            n_val = val;}
         
         int getNum() {
             return counter;}
@@ -64,9 +62,8 @@ private:
             return end_of_word;}
         
         ValueType* getValue() {
-            if(n_val == NULL)
-                return nullptr;
-            return n_val;}
+            ValueType* temp = n_val;
+            return temp;}
         
         void setEndofWord(bool end) {
             end_of_word = end;}
@@ -87,32 +84,32 @@ private:
             }
             
             //  Now we add new nodes
-            Node * given_Node = new Node(&val);
+            Node * given_Node = new Node(&val, true);
             given_Node->setEndofWord(true);
 
-           t->addNode(given_Node, key.substr(share, key.size()), val);
+           t->addNode(given_Node, key.substr(share, key.size()), &val);
             //-------------------------------------------------
             string n_key = t->n_key;
-            ValueType new_val =  *( t->getValue() );
-            Node * orig_Node = new Node(&new_val);
+            
+            ValueType* new_val =  t->getValue();
+            Node * orig_Node = new Node(new_val, true);
             orig_Node->setEndofWord(true);
-            t->addNode(orig_Node, n_key.substr(share, n_key.size()) , *(orig_Node->getValue()) );
+            t->addNode(orig_Node, n_key.substr(share, n_key.size()) , orig_Node->getValue() );
 
             
             
             //  Set n's key
             t->setKeyNode(t->n_key.substr(0, share));
             t->setEndofWord(false);
-            delete t->getValue();
             //  Now, we decide the value
-            
-            ValueType* tem_v = orig_Node->getValue();
+    
             if(n_key > key) {    //  If node's key is longer
-                t->setValueNode(val);
+                t->setValueNode(&val);
             }
+            counter+=2;
         }
         
-        vector<ValueType> suffix;
+
         Node * prefix [26];  //  prefix
         string n_key = "$";
 private:
@@ -144,35 +141,30 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
     
     //  Case 1: The tree is empty => we add the node as the root
     int pos = key[0] - 'a';
-    if(root->getNum() == 0 || root->prefix[pos] == nullptr){ //  Has no nodes, aka is EMPTY
-        Node * n_root = new Node(nullptr); //  We make new pointer at a new Node.
+    if(root->getNum() == 0 || root->prefix[pos]->n_key == "$"){ //  Has no nodes, aka is EMPTY
+        Node * n_root = new Node(nullptr,true); //  We make new pointer at a new Node.
         n_root->setKeyNode(key);  //  We store the given value
-        root->addNode(n_root, key, value);   //  Add new Node;
-        root->setEndofWord(true);
+        ValueType* r_t = new ValueType(value);
+        root->addNode(n_root, key, r_t);   //  Add new Node;
+        root->setEndofWord(false);
         return;
     }
-    else if(root->prefix[pos]->getValue() == NULL){
-        Node * n_root = new Node(nullptr); //  We make new pointer at a new Node.
-        n_root->setKeyNode(key);  //  We store the given value
-        root->addNode(n_root, key, value);   //  Add new Node;
-        root->setEndofWord(true);
-        return;
-    }
+
     
     //------------------------------------------------------------------------------//
     
-      
-    if(root->getNum() != 0){    //  If the tree is not empty,
+    Node* temp = root;
+    if(temp->getNum() != 0){    //  If the tree is not empty,
         
         
-        Node* temp = root;
         int pos = key[0] - 'a';
                 
     //  Case 2: Prefix and key are the exact same!
                 
                 if(key == temp->prefix[pos]->n_key){
                     temp = temp->prefix[pos];
-                    temp->setValueNode(value);
+                    ValueType* v_t = new ValueType(value);
+                    temp->setValueNode(v_t);
                     return;
                 }
                 
@@ -195,26 +187,42 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
                     //  Find shared letters
                 
                     //  Find size for loop
-                    if(key.size() > temp->prefix[pos]->n_key.size())
+                    if(key.size() > temp->prefix[pos]->n_key.size() && temp->prefix[pos]->getLeaf()==true)
                          size_t = temp->prefix[pos]->n_key.size();
                     else
                         size_t = key.size();
                 }   //  <= end of else if for different sizes
         
         
-        
                     for( int  j = 0; j < size_t; j++ ){         //  Let's iterate through the array.
-                        if(key[j] !=  temp->prefix[pos]->n_key[j])
+                        if(key[j] ==  temp->prefix[pos]->n_key[j] )
+                        shared++;
+                        else if((key[j] !=  temp->prefix[pos]->n_key[j] && temp->prefix[pos]->getLeaf() == true) ||
+                                size_t - j > 0)
                             break;
-                        else
-                            shared++;
+                        else if(temp->prefix[pos]->getLeaf() == false || j == size_t-1){
+                            temp = temp->prefix[pos];
+                            j=-1;
+                            size_t = key.size();
+                            key = key.substr(shared, key.size());
+                            pos = key[0] - 'a';
+                            shared = 0;
+                        }
                     }   //  <=  end of for-loop
                      
         
     //------------------------------------------------------------------------------//
-        
+        pos = key[0] - 'a';
+//        if(temp->prefix[pos]->n_key == "$"){ //  Has no nodes, aka is EMPTY
+//            Node * n_root = new Node(nullptr,true); //  We make new pointer at a new Node.
+//            n_root->setKeyNode(key);  //  We store the given value
+//            temp->addNode(n_root, key, value);   //  Add new Node;
+//            temp->setEndofWord(true);
+//            return;
+//        }
                   //    Now we split!
                     temp->splitNodes(temp->prefix[pos], key, value, shared);
+
 
     }   //  <= end of if root Num != 0
     
@@ -222,7 +230,16 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
     //------------------------------------------------------------------------------//
 
 }
+         
 
+
+
+template <typename ValueType>
+ValueType* RadixTree<ValueType>::search(std::string key) const{
+    ValueType* value = nullptr;
+        return value;
+    
+}
 
 
 

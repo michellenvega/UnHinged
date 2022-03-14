@@ -36,7 +36,7 @@ public:
 private:
     string m_name, m_email; //  To store each person's information.
     vector<AttValPair>attributes;   //  To keep track of each person's attributes.
-    RadixTree<vector<string>>  p_tree;  // EACH VECTORS HOLDS COMPATIBLES
+    RadixTree< set<string> >  p_tree;  // EACH VECTORS HOLDS COMPATIBLES
 };
 
 

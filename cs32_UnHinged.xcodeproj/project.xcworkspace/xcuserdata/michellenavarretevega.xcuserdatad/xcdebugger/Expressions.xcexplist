@@ -3,19 +3,15 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "RadixTree&lt;int&gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int const&amp;):RadixTree.h">
-      </ContextState>
-      <ContextState
-         contextName = "RadixTree&lt;int&gt;::Node::getKey():RadixTree.h">
+         contextName = "RadixTree&lt;int&gt;::Node::addNode(RadixTree&lt;int&gt;::Node*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int):RadixTree.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "counter">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;::__is_long() const:string">
-      </ContextState>
-      <ContextState
-         contextName = "RadixTree&lt;int&gt;::Node::getValue():RadixTree.h">
-      </ContextState>
-      <ContextState
-         contextName = "RadixTree&lt;int&gt;::Node::~Node():RadixTree.h">
       </ContextState>
       <ContextState
          contextName = "RadixTree&lt;int*&gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int* const&amp;):RadixTree.h">
@@ -35,20 +31,13 @@
          contextName = "main:main.cpp">
       </ContextState>
       <ContextState
-         contextName = "RadixTree&lt;int&gt;::Node::addNode(RadixTree&lt;int&gt;::Node*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int):RadixTree.h">
-         <PersistentStrings>
-            <PersistentString
-               value = "counter">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "RadixTree&lt;int&gt;::Node::getKey():RadixTree.h">
       </ContextState>
       <ContextState
-         contextName = "RadixTree&lt;int&gt;::Node::splitNodes(RadixTree&lt;int&gt;::Node*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int, int):RadixTree.h">
-         <PersistentStrings>
-            <PersistentString
-               value = "val">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "RadixTree&lt;int&gt;::Node::~Node():RadixTree.h">
+      </ContextState>
+      <ContextState
+         contextName = "RadixTree&lt;int&gt;::Node::getValue():RadixTree.h">
       </ContextState>
       <ContextState
          contextName = "RadixTree&lt;int*&gt;::insertRecursive(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int* const&amp;, RadixTree&lt;int*&gt;::Node*):RadixTree.h">
@@ -63,6 +52,25 @@
       </ContextState>
       <ContextState
          contextName = "RadixTree&lt;int*&gt;::search(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;) const:RadixTree.h">
+      </ContextState>
+      <ContextState
+         contextName = "RadixTree&lt;int&gt;::Node::splitNodes(RadixTree&lt;int&gt;::Node*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int, int):RadixTree.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "val">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RadixTree&lt;int&gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int const&amp;):RadixTree.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "key.substr(shared+1, key.size())">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RadixTree&lt;int&gt;::Node::Node(int*):RadixTree.h">
       </ContextState>
    </ContextStates>
 </VariablesViewState>
