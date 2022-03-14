@@ -197,8 +197,7 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
                     for( int  j = 0; j < size_t; j++ ){         //  Let's iterate through the array.
                         if(key[j] ==  temp->prefix[pos]->n_key[j] )
                         shared++;
-                        else if((key[j] !=  temp->prefix[pos]->n_key[j] && temp->prefix[pos]->getLeaf() == true) ||
-                                size_t - j > 0)
+                        else if((key[j] !=  temp->prefix[pos]->n_key[j] && temp->prefix[pos]->getLeaf() == true))
                             break;
                         else if(temp->prefix[pos]->getLeaf() == false || j == size_t-1){
                             temp = temp->prefix[pos];
@@ -213,13 +212,6 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
         
     //------------------------------------------------------------------------------//
         pos = key[0] - 'a';
-//        if(temp->prefix[pos]->n_key == "$"){ //  Has no nodes, aka is EMPTY
-//            Node * n_root = new Node(nullptr,true); //  We make new pointer at a new Node.
-//            n_root->setKeyNode(key);  //  We store the given value
-//            temp->addNode(n_root, key, value);   //  Add new Node;
-//            temp->setEndofWord(true);
-//            return;
-//        }
                   //    Now we split!
                     temp->splitNodes(temp->prefix[pos], key, value, shared);
 

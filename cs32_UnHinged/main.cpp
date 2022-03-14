@@ -121,7 +121,7 @@ int main(){
     nametree.insert("hellfire",6);
     nametree.insert("yo",5);
     nametree.insert("your",3);
-     nametree.insert("yolo",10);
+     nametree.insert("yolo",10);    //  This isnt working!
     cout << "names?" << endl;
 
 
