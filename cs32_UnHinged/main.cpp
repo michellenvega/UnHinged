@@ -121,7 +121,16 @@ int main(){
     nametree.insert("hellfire",6);
     nametree.insert("yo",5);
     nametree.insert("your",3);
+    
+    
+    //  NEXT IS ERROR!!!
      nametree.insert("yolo",10);    //  This isnt working!
+    
+    //How to solve?
+    // Take a look at where it is going
+        // I suspect it has something to do with the key sizes
+    
+    
     cout << "names?" << endl;
 
 

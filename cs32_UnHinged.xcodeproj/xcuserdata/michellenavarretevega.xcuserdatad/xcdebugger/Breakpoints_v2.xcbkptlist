@@ -62,8 +62,8 @@
             filePath = "cs32_UnHinged/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "main()"
             landmarkType = "9">
          </BreakpointContent>
@@ -78,103 +78,10 @@
             filePath = "cs32_UnHinged/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "main()"
             landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "158E98DE-3C23-4B6D-8B9D-BB8528472A72"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cs32_UnHinged/RadixTree.h"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "insert(key, value)"
-            landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "158E98DE-3C23-4B6D-8B9D-BB8528472A72 - a37c491c8af9b518"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RadixTree&lt;std::__1::vector&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt; &gt; &gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::vector&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt; &gt; const&amp;)"
-                  moduleName = "cs32_UnHinged"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/RadixTree.h"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "198"
-                  endingLineNumber = "198"
-                  offsetFromSymbolStart = "1144">
-               </Location>
-               <Location
-                  uuid = "158E98DE-3C23-4B6D-8B9D-BB8528472A72 - a300ab9781b0bf2e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RadixTree&lt;PersonProfile&gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, PersonProfile const&amp;)"
-                  moduleName = "cs32_UnHinged"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/RadixTree.h"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "198"
-                  endingLineNumber = "198"
-                  offsetFromSymbolStart = "1144">
-               </Location>
-               <Location
-                  uuid = "158E98DE-3C23-4B6D-8B9D-BB8528472A72 - 5f84e936a881e502"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RadixTree&lt;std::__1::vector&lt;AttValPair, std::__1::allocator&lt;AttValPair&gt; &gt; &gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::vector&lt;AttValPair, std::__1::allocator&lt;AttValPair&gt; &gt; const&amp;)"
-                  moduleName = "cs32_UnHinged"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/RadixTree.h"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "198"
-                  endingLineNumber = "198"
-                  offsetFromSymbolStart = "1144">
-               </Location>
-               <Location
-                  uuid = "158E98DE-3C23-4B6D-8B9D-BB8528472A72 - bc011f686bbb026e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RadixTree&lt;std::__1::set&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::less&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt; &gt; &gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::set&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::less&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt; &gt; const&amp;)"
-                  moduleName = "cs32_UnHinged"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/RadixTree.h"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "198"
-                  endingLineNumber = "198"
-                  offsetFromSymbolStart = "1144">
-               </Location>
-               <Location
-                  uuid = "158E98DE-3C23-4B6D-8B9D-BB8528472A72 - 657acebd51d6ad13"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RadixTree&lt;int&gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int const&amp;)"
-                  moduleName = "cs32_UnHinged"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/RadixTree.h"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "198"
-                  endingLineNumber = "198"
-                  offsetFromSymbolStart = "1023">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
