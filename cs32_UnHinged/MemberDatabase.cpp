@@ -68,7 +68,7 @@ bool MemberDatabase::LoadDatabase(std::string filename){
                     
                        for(int i = 0; i < numPairs; i++){
 
-                            if(!getline(ifs, oneLine))
+                            if(i!= 0 && !getline(ifs, oneLine))
                                          break;
                        stringstream t_str(oneLine);   // will help us alter string
                        getline(t_str, m_attribute, ',');  //  Obtain the attribute
