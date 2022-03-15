@@ -98,6 +98,8 @@ bool MemberDatabase::LoadDatabase(std::string filename){
                    
                    
                    
+                   
+                   
  //-------------------------------------------------------------//
 
                    member_emails.insert(profile.GetEmail(), profile);  //  Update attributes per the line
