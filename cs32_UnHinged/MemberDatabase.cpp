@@ -63,7 +63,7 @@ bool MemberDatabase::LoadDatabase(std::string filename){
 
                    
                    
-                   
+                     
                    if(numPairs > 0){    //  We have at least one attribute pair.
                     
                        for(int i = 0; i < numPairs; i++){
