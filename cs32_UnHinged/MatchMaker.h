@@ -9,12 +9,13 @@
 #define MatchMaker_h
 
 #include <stdio.h>
-#include <string>
 #include "provided.h"
 #include "MemberDatabase.h"
 #include "AttributeTranslator.h"
 #include <set>
 #include <string>
+#include "utility.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ public:
     vector<EmailCount> IdentifyRankedMatches(string email, int threshold) const;
     
 private:
-    MemberDatabase* m_mdb;  //  Keep track of all the members
+    const MemberDatabase* m_mdb;  //  Keep track of all the members
     AttributeTranslator* m_at;  //  Keep track of all the attributes
     static bool descending(const EmailCount& e1, const EmailCount& e2);
 };

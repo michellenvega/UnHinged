@@ -13,9 +13,8 @@
 #include "AttributeTranslator.h"
 #include "RadixTree.h"
 #include <vector>
+#include <set>
 using namespace std;
-
-
 
 class PersonProfile{
 public:
@@ -36,7 +35,7 @@ public:
 private:
     string m_name, m_email; //  To store each person's information.
     vector<AttValPair>attributes;   //  To keep track of each person's attributes.
-    RadixTree< set<string> >  p_tree;  // EACH VECTORS HOLDS COMPATIBLES
+    RadixTree<set<string>>  p_tree;  // EACH VECTORS HOLDS COMPATIBLES
 };
 
 

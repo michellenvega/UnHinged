@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7400D79827E05BA5009488EC /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7400D79727E05BA5009488EC /* utility.cpp */; };
 		74C8154127D0697000C748D7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74C8154027D0697000C748D7 /* main.cpp */; };
 		74D2F94B27D06B4A00F2779C /* PersonProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D2F94927D06B4A00F2779C /* PersonProfile.cpp */; };
 		74D2F94E27D06B6A00F2779C /* AttributeTranslator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D2F94C27D06B6A00F2779C /* AttributeTranslator.cpp */; };
@@ -27,6 +28,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7400D79627E05B4F009488EC /* utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utility.h; sourceTree = "<group>"; };
+		7400D79727E05BA5009488EC /* utility.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
 		7486E7A027D069F200C5BF68 /* provided.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = provided.h; sourceTree = "<group>"; };
 		7495A64227D5619C0091B38D /* translator.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = translator.txt; path = /Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/../../../../../Downloads/Unhinged/translator.txt; sourceTree = "<absolute>"; };
 		74C8153D27D0697000C748D7 /* cs32_UnHinged */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cs32_UnHinged; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				74D2F94827D06B0D00F2779C /* members.txt */,
+				7400D79627E05B4F009488EC /* utility.h */,
+				7400D79727E05BA5009488EC /* utility.cpp */,
 				74C8154027D0697000C748D7 /* main.cpp */,
 				74D2F95227D06BC200F2779C /* MatchMaker.cpp */,
 				74D2F95327D06BC200F2779C /* MatchMaker.h */,
@@ -117,7 +122,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					74C8153C27D0697000C748D7 = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -147,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7400D79827E05BA5009488EC /* utility.cpp in Sources */,
 				74D2F95127D06B8500F2779C /* MemberDatabase.cpp in Sources */,
 				74D2F94E27D06B6A00F2779C /* AttributeTranslator.cpp in Sources */,
 				74D2F95427D06BC200F2779C /* MatchMaker.cpp in Sources */,
@@ -272,6 +278,7 @@
 		74C8154527D0697000C748D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -280,6 +287,7 @@
 		74C8154627D0697000C748D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

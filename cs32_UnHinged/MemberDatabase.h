@@ -15,8 +15,6 @@
 #include "PersonProfile.h"
 #include <fstream>
 #include <sstream>
-using namespace std;
-
 
 
 class MemberDatabase{

@@ -53,7 +53,7 @@ MatchMaker::~MatchMaker(){
      
      // To store all the information we need
      vector<EmailCount> email_vec;
-     /*
+     
      set<AttValPair> comp_set;   // attributes
      
      // First, get all attributes of this profile
@@ -129,7 +129,7 @@ MatchMaker::~MatchMaker(){
      
      //-----------------------------------------------------------------//
 
-     */
+     
      return email_vec;
      
      

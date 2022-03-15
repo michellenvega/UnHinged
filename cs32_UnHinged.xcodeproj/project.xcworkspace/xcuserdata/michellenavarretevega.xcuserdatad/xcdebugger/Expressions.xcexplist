@@ -3,12 +3,21 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "findMatches(MemberDatabase const&amp;, AttributeTranslator const&amp;):main.cpp">
+      </ContextState>
+      <ContextState
          contextName = "RadixTree&lt;int&gt;::Node::addNode(RadixTree&lt;int&gt;::Node*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int):RadixTree.h">
          <PersistentStrings>
             <PersistentString
                value = "counter">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RadixTree&lt;std::__1::vector&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt; &gt; &gt;::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::vector&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::allocator&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt; &gt; const&amp;):RadixTree.h">
+      </ContextState>
+      <ContextState
+         contextName = "PersonProfile::AddAttValPair(AttValPair const&amp;):PersonProfile.cpp">
       </ContextState>
       <ContextState
          contextName = "std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;::__is_long() const:string">
@@ -51,13 +60,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RadixTree&lt;int*&gt;::search(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;) const:RadixTree.h">
-      </ContextState>
-      <ContextState
          contextName = "RadixTree&lt;int&gt;::Node::splitNodes(RadixTree&lt;int&gt;::Node*, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, int, int):RadixTree.h">
          <PersistentStrings>
             <PersistentString
                value = "val">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RadixTree&lt;int*&gt;::search(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;) const:RadixTree.h">
+      </ContextState>
+      <ContextState
+         contextName = "PersonProfile::GetNumAttValPairs() const:PersonProfile.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "MemberDatabase::LoadDatabase(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;):MemberDatabase.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "m_name">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

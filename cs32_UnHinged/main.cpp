@@ -5,7 +5,6 @@
 #include "MemberDatabase.h"
 #include "MatchMaker.h"
 #include "provided.h"
-#include "RadixTree.h" // <<< TAKE OFF
 #include <iostream>
 #include <string>
 #include <vector>
@@ -63,7 +62,7 @@ bool findMatches(const MemberDatabase& mdb, const AttributeTranslator& at)
     int threshold;
     std::cout << "How many shared attributes must matches have? ";
     std::cin >> threshold;
-    std::cin.ignore(10000, '\n'); 
+    std::cin.ignore(10000, '\n');
 
       // Print matches and the number of matching translated attributes
     MatchMaker mm(mdb, at);
@@ -81,62 +80,3 @@ bool findMatches(const MemberDatabase& mdb, const AttributeTranslator& at)
     std::cout << std::endl;
     return true;
 }
-
-/*
-
-int main(){
-    
-    
-    RadixTree<int> testing;
-
-    //  test case 1
-    testing.insert("test", 2);
-    testing.insert("slow", 3);
-    testing.insert("water", 5);
-    
-    cout << "finished test case 1" << endl;
-    
-    testing.insert("slower", 1);
-    
-    cout << "finished test case 2" << endl;
-
-    RadixTree<int> fruits;
-    
-    fruits.insert("watermelon", 9);
-    fruits.insert("water", 5);
-
-    cout << "finished test case 3" << endl;
-    
-    
-    fruits.insert("test", 5);
-    fruits.insert("team", 2);
-    fruits.insert("teach", 0);
-    fruits.insert("teacher", 9);
-    cout << "whyyyy" << endl;
-    
-    
-    RadixTree<int> nametree;
-    
-    nametree.insert("hello", 2);
-    nametree.insert("hellfire",6);
-    nametree.insert("yo",5);
-    nametree.insert("your",3);
-    
-    
-    //  NEXT IS ERROR!!!
-     nametree.insert("yolo",10);    //  This isnt working!
-    
-    // How to solve?
-    // Take a look at where it is going
-        // I suspect it has something to do with the key sizes
-    //
-    
-    
-    cout << "names?" << endl;
-
-
-
-}
-*/
-
-
