@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-/*
+
 const std::string MEMBERS_FILE    = "/Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/members.txt";
 const std::string TRANSLATOR_FILE = "/Users/michellenavarretevega/Desktop/cs32_ucla/cs_project4/cs32_UnHinged/cs32_UnHinged/../../../../../Downloads/Unhinged/translator.txt";
 
@@ -82,7 +82,7 @@ bool findMatches(const MemberDatabase& mdb, const AttributeTranslator& at)
     return true;
 }
 
-*/
+/*
 
 int main(){
     
@@ -126,9 +126,10 @@ int main(){
     //  NEXT IS ERROR!!!
      nametree.insert("yolo",10);    //  This isnt working!
     
-    //How to solve?
+    // How to solve?
     // Take a look at where it is going
         // I suspect it has something to do with the key sizes
+    //
     
     
     cout << "names?" << endl;
@@ -136,6 +137,6 @@ int main(){
 
 
 }
-
+*/
 
 

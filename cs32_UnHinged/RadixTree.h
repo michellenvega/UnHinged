@@ -35,9 +35,7 @@ private:
         }
         
         ~Node(){    //  Double check this
-
         }
-        
         bool addNode(Node * n, string key, ValueType* m_value) {
             int pos = key[0] - 'a';
             n->setKeyNode(key);
@@ -47,8 +45,6 @@ private:
             
             return true;
               }
-        
-        
         void setKeyNode(string key) {
             n_key = key;}
         
@@ -158,16 +154,16 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
         
         
         int pos = key[0] - 'a';
-                
-    //  Case 2: Prefix and key are the exact same!
-                
-                if(key == temp->prefix[pos]->n_key){
-                    temp = temp->prefix[pos];
-                    ValueType* v_t = new ValueType(value);
-                    temp->setValueNode(v_t);
-                    return;
-                }
-                
+        
+        //  Case 2: Prefix and key are the exact same!
+        
+        if(key == temp->prefix[pos]->n_key){
+            temp = temp->prefix[pos];
+            ValueType* v_t = new ValueType(value);
+            temp->setValueNode(v_t);
+            return;
+        }
+        
     //------------------------------------------------------------------------------//
 
          
@@ -218,13 +214,9 @@ void RadixTree<ValueType>::insert(std::string key, const ValueType& value){
 
     }   //  <= end of if root Num != 0
     
-    
     //------------------------------------------------------------------------------//
 
 }
-         
-
-
 
 template <typename ValueType>
 ValueType* RadixTree<ValueType>::search(std::string key) const{

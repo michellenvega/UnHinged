@@ -47,9 +47,10 @@ bool MemberDatabase::LoadDatabase(std::string filename){
     //-------------------------------------------------------------//
 
         else{   //  Now, we count.
-            if(lineCount == 0){     //  Empty line!
-                lineCount++;    // To move to the next line
-            }   else if (lineCount == 1){    //  Name is the first line
+//            if(lineCount == 0){     //  Empty line!
+//                lineCount++;    // To move to the next line
+//            }
+             if (lineCount == 1){    //  Name is the first line
                 m_name = oneLine;
                 lineCount ++;
             }   else if (lineCount == 2){   //  Email
@@ -92,6 +93,12 @@ bool MemberDatabase::LoadDatabase(std::string filename){
             
         }   //  <= end of 'non empty line' else statement
     
+//        if(!getline(ifs, oneLine)){
+//            break;
+//        }
+        
+        
+        
     }   // <= end of while loop
 
     return true;
