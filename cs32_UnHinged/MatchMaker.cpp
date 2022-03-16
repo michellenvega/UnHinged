@@ -54,7 +54,7 @@ MatchMaker::~MatchMaker(){
      // To store all the information we need
      vector<EmailCount> email_vec;
      
-     set<AttValPair> comp_set;   // attributes
+     multiset<AttValPair> comp_set;   // attributes
      
      // First, get all attributes of this profile
      int total_att = profile->GetNumAttValPairs();  //  Total num of attributes
@@ -72,8 +72,8 @@ MatchMaker::~MatchMaker(){
         // Now we add each compatible into set of strings for easy access
     
          for(int j = 0; j < comp_vec.size(); j++){
-         const AttValPair c_pair (comp_vec[i].attribute, comp_vec[i].value);
-         comp_set.insert(comp_vec[i]);
+         const AttValPair c_pair (comp_vec[j].attribute, comp_vec[j].value);
+         comp_set.insert(comp_vec[j]);
 
          }
          

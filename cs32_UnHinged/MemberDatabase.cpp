@@ -38,7 +38,7 @@ bool MemberDatabase::LoadDatabase(std::string filename){
            
            //  First, calculate num of lines per member.
            if(oneLine =="") //  If line if empty
-               break;
+               lineCount = 1;
               
            
            
