@@ -90,6 +90,7 @@ MatchMaker::~MatchMaker(){
          vector<string> compad_e = m_mdb->FindMatchingMembers(*it);
          // Get emails related to each pair
          for(int k = 0; k < compad_e.size(); k++)
+             if(compad_e[k] != email)
              email_set.insert(compad_e[k]); 
        }
      
