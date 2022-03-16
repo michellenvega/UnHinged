@@ -87,7 +87,8 @@ MatchMaker::~MatchMaker(){
      // find matching members!
      set<AttValPair>::iterator it = comp_set.begin();
      for( ; it != comp_set.end(); it++){
-         vector<string> compad_e = m_mdb->FindMatchingMembers(*it); // Get emails related to each pair
+         vector<string> compad_e = m_mdb->FindMatchingMembers(*it);
+         // Get emails related to each pair
          for(int k = 0; k < compad_e.size(); k++)
              email_set.insert(compad_e[k]); 
        }

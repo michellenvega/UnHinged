@@ -125,9 +125,10 @@ std::vector<std::string> MemberDatabase::FindMatchingMembers(const AttValPair& i
     // // // // // //  //  //  //  //  //  //  //  //  //  //  //  //
     
     //-------------------------------------------------------------//
-    
+    vector<string> none;
     string check_pair = input.attribute + ',' + input.value;    // Concatenate the pair string
-
+    if(member_attr.search(check_pair) == NULL)
+        return none;
     return *member_attr.search(check_pair); //  It will return the vector of strings
 }
 

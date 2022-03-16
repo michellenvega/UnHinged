@@ -101,17 +101,25 @@ bool AttributeTranslator::Load(string filename){
 
 vector<AttValPair> AttributeTranslator::FindCompatibleAttValPairs(const AttValPair& source) const{
     
+    //  Have a string for the source attribute and source value
     string t_pair = source.attribute + "," + source.value;
+    vector<AttValPair> compPairs;
     
+    //   Now we will go through the radix tree
+    //   We will check the compatible pairs
+       vector<AttValPair>* pairs = att_pairs.search(t_pair);
+      
+    //-------------------------------------------------------------//
     
-  //   vector<AttValPair>* m_pairs = att_pairs.search(t_pair);
-    //  To check for later tests...
-    /*
-    for (int i = 0; i < (*m_pairs).size(); i++) {
+    //      Now, if the pairs is null, there are no compatible pairs.
+       if(pairs == nullptr)
+       {
+           //   Thus, we return an empty vector
+           return compPairs;
+       }
+    
+    //-------------------------------------------------------------//
 
-        cerr << (*att_pairs.search(t_pair))[i].attribute << ", " << (*att_pairs.search(t_pair))[i].value << endl;
-    }*/
-
-    return *att_pairs.search(t_pair);
+    return *pairs;
 }
 
